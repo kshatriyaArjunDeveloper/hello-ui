@@ -22,7 +22,11 @@ class AllRoundedContainers extends StatelessWidget
     this.horizontalPadding,
     this.allPadding,
     // Border
-    required double? allCornerRadius,
+    this.bottomLeftRadius,
+    this.bottomRightRadius,
+    this.topLeftRadius,
+    this.topRightRadius,
+    this.allCornerRadius,
     this.boxShadowList,
     this.borderColor,
     this.borderWidth,
@@ -31,9 +35,7 @@ class AllRoundedContainers extends StatelessWidget
     this.width,
     this.color,
     this.child,
-  }) : super(key: key) {
-    this.allCornerRadius = allCornerRadius ?? 0;
-  }
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,16 +46,23 @@ class AllRoundedContainers extends StatelessWidget
         left: leftPadding ?? horizontalPadding ?? allPadding ?? 0,
         right: rightPadding ?? horizontalPadding ?? allPadding ?? 0,
         top: topPadding ?? verticalPadding ?? allPadding ?? 0,
-        bottom: topPadding ?? verticalPadding ?? allPadding ?? 0,
+        bottom: bottomPadding ?? verticalPadding ?? allPadding ?? 0,
       ),
       margin: EdgeInsets.only(
         left: leftMargin ?? horizontalMargin ?? allMargin ?? 0,
         right: rightMargin ?? horizontalMargin ?? allMargin ?? 0,
         top: topMargin ?? verticalMargin ?? allMargin ?? 0,
-        bottom: topMargin ?? verticalMargin ?? allMargin ?? 0,
+        bottom: bottomMargin ?? verticalMargin ?? allMargin ?? 0,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(allCornerRadius!),
+        // borderRadius: BorderRadius.circular(allCornerRadius!),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(topLeftRadius ?? allCornerRadius ?? 0),
+          topRight: Radius.circular(topRightRadius ?? allCornerRadius ?? 0),
+          bottomLeft: Radius.circular(bottomLeftRadius ?? allCornerRadius ?? 0),
+          bottomRight:
+              Radius.circular(bottomRightRadius ?? allCornerRadius ?? 0),
+        ),
         border: Border.all(
           color: borderColor ?? Colors.transparent,
           width: borderWidth ?? 0,
@@ -70,6 +79,18 @@ class AllRoundedContainers extends StatelessWidget
 
   @override
   late final double? allCornerRadius;
+
+  @override
+  late double? bottomLeftRadius;
+
+  @override
+  late double? bottomRightRadius;
+
+  @override
+  late double? topLeftRadius;
+
+  @override
+  late double? topRightRadius;
 
   @override
   late final Color? borderColor;

@@ -19,7 +19,13 @@ class BaseAttributeWidgetInterface extends BaseCustomWidgetInterface {
 }
 
 class SpecialAttributeWidgetInterface extends BaseAttributeWidgetInterface {
+  // Corner radius
+  late final double? topLeftRadius;
+  late final double? topRightRadius;
+  late final double? bottomLeftRadius;
+  late final double? bottomRightRadius;
   late final double? allCornerRadius;
+
   late final Color? borderColor;
   late final double? borderWidth;
 }

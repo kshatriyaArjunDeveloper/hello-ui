@@ -3,11 +3,16 @@
 library hello;
 
 import 'package:flutter/material.dart';
+import 'package:hello/src/attributes/padding_custom/padding_custom.dart';
 import 'package:hello/src/holders/containers/all_rounded_container.dart';
 
 StatelessWidget AllRoundedContainer({
   // Border
   List<BoxShadow>? boxShadowList,
+  double? bottomLeftRadius,
+  double? bottomRightRadius,
+  double? topLeftRadius,
+  double? topRightRadius,
   double? allCornerRadius,
   Color? borderColor,
   double? borderWidth,
@@ -54,6 +59,10 @@ StatelessWidget AllRoundedContainer({
       horizontalPadding: horizontalPadding,
       allPadding: allPadding,
       // Border
+      bottomLeftRadius: bottomLeftRadius,
+      bottomRightRadius: bottomRightRadius,
+      topLeftRadius: topLeftRadius,
+      topRightRadius: topRightRadius,
       allCornerRadius: allCornerRadius,
       borderColor: borderColor,
       borderWidth: borderWidth,
@@ -62,5 +71,31 @@ StatelessWidget AllRoundedContainer({
       height: height,
       width: width,
       color: color,
+      child: child,
+    );
+
+StatelessWidget PaddingCustom({
+  // Padding
+  double? topPadding,
+  double? bottomPadding,
+  double? leftPadding,
+  double? rightPadding,
+  double? verticalPadding,
+  double? horizontalPadding,
+  double? allPadding,
+
+  // Basic
+  Widget? child,
+}) =>
+    PaddingCustoms(
+      // Padding
+      leftPadding: leftPadding,
+      rightPadding: rightPadding,
+      topPadding: topPadding,
+      bottomPadding: bottomPadding,
+      verticalPadding: verticalPadding,
+      horizontalPadding: horizontalPadding,
+      allPadding: allPadding,
+      // Basic
       child: child,
     );
