@@ -99,3 +99,13 @@ StatelessWidget PaddingCustom({
       // Basic
       child: child,
     );
+
+extension ClickExtension on Widget {
+  /// Adds on click without splash effect.
+  Widget onClickSplash(void Function() onClickFunction) {
+    return InkWell(
+      onTap: onClickFunction,
+      child: this,
+    );
+  }
+}
