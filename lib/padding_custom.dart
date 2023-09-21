@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:hello/src/holders/ui_interface.dart';
 
-class PaddingCustoms extends StatelessWidget implements SlotInterface {
-  PaddingCustoms({
+class PaddingCustom extends StatelessWidget implements SlotInterface {
+  PaddingCustom({
     Key? key,
     // Padding
     this.leftPadding,
