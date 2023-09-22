@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello/src/holders/ui_interface.dart';
 
-class AllRoundedContainers extends StatelessWidget
-    implements SpecialAttributeWidgetInterface, SlotInterface {
-  AllRoundedContainers({
+class Container_ extends StatelessWidget {
+  Container_({
     Key? key,
     // Margin
     this.leftMargin,
@@ -55,7 +53,6 @@ class AllRoundedContainers extends StatelessWidget
         bottom: bottomMargin ?? verticalMargin ?? allMargin ?? 0,
       ),
       decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(allCornerRadius!),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(topLeftRadius ?? allCornerRadius ?? 0),
           topRight: Radius.circular(topRightRadius ?? allCornerRadius ?? 0),
@@ -75,83 +72,62 @@ class AllRoundedContainers extends StatelessWidget
   }
 
   // Border
+
   final List<BoxShadow>? boxShadowList;
 
-  @override
-  late final double? allCornerRadius;
+  final double? allCornerRadius;
 
-  @override
-  late double? bottomLeftRadius;
+  double? bottomLeftRadius;
 
-  @override
-  late double? bottomRightRadius;
+  double? bottomRightRadius;
 
-  @override
-  late double? topLeftRadius;
+  double? topLeftRadius;
 
-  @override
-  late double? topRightRadius;
+  double? topRightRadius;
 
-  @override
-  late final Color? borderColor;
+  final Color? borderColor;
 
-  @override
-  late final double? borderWidth;
+  final double? borderWidth;
 
   // Margin
-  @override
-  late final double? topMargin;
 
-  @override
-  late final double? bottomMargin;
+  final double? topMargin;
 
-  @override
-  late final double? leftMargin;
+  final double? bottomMargin;
 
-  @override
-  late final double? rightMargin;
+  final double? leftMargin;
 
-  @override
-  late final double? verticalMargin;
+  final double? rightMargin;
 
-  @override
-  late final double? horizontalMargin;
+  final double? verticalMargin;
 
-  @override
-  late final double? allMargin;
+  final double? horizontalMargin;
+
+  final double? allMargin;
 
   // Padding
-  @override
-  late final double? topPadding;
 
-  @override
-  late final double? bottomPadding;
+  final double? topPadding;
 
-  @override
-  late final double? leftPadding;
+  final double? bottomPadding;
 
-  @override
-  late final double? rightPadding;
+  final double? leftPadding;
 
-  @override
-  late final double? verticalPadding;
+  final double? rightPadding;
 
-  @override
-  late final double? horizontalPadding;
+  final double? verticalPadding;
 
-  @override
-  late final double? allPadding;
+  final double? horizontalPadding;
+
+  final double? allPadding;
 
   // Basic
-  @override
-  late final Color? color;
 
-  @override
-  late final double? height;
+  final Color? color;
 
-  @override
-  late final double? width;
+  final double? height;
 
-  @override
-  late final Widget? child;
+  final double? width;
+
+  final Widget? child;
 }
