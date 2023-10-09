@@ -5,6 +5,8 @@ class AllRoundedContainers extends StatelessWidget
     implements SpecialAttributeWidgetInterface, SlotInterface {
   AllRoundedContainers({
     Key? key,
+    //Styling
+    this.gradient,
     // Margin
     this.leftMargin,
     this.rightMargin,
@@ -31,6 +33,7 @@ class AllRoundedContainers extends StatelessWidget
     this.borderColor,
     this.borderWidth,
     // Basic
+    this.shouldMakeCircle = false,
     this.height,
     this.width,
     this.color,
@@ -42,6 +45,7 @@ class AllRoundedContainers extends StatelessWidget
     return Container(
       height: height,
       width: width,
+      clipBehavior: Clip.antiAlias,
       padding: EdgeInsets.only(
         left: leftPadding ?? horizontalPadding ?? allPadding ?? 0,
         right: rightPadding ?? horizontalPadding ?? allPadding ?? 0,
@@ -55,24 +59,32 @@ class AllRoundedContainers extends StatelessWidget
         bottom: bottomMargin ?? verticalMargin ?? allMargin ?? 0,
       ),
       decoration: BoxDecoration(
-        // borderRadius: BorderRadius.circular(allCornerRadius!),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(topLeftRadius ?? allCornerRadius ?? 0),
-          topRight: Radius.circular(topRightRadius ?? allCornerRadius ?? 0),
-          bottomLeft: Radius.circular(bottomLeftRadius ?? allCornerRadius ?? 0),
-          bottomRight:
-              Radius.circular(bottomRightRadius ?? allCornerRadius ?? 0),
-        ),
+        shape: shouldMakeCircle ? BoxShape.circle : BoxShape.rectangle,
+        borderRadius: shouldMakeCircle
+            ? null
+            : BorderRadius.only(
+                topLeft: Radius.circular(topLeftRadius ?? allCornerRadius ?? 0),
+                topRight:
+                    Radius.circular(topRightRadius ?? allCornerRadius ?? 0),
+                bottomLeft:
+                    Radius.circular(bottomLeftRadius ?? allCornerRadius ?? 0),
+                bottomRight:
+                    Radius.circular(bottomRightRadius ?? allCornerRadius ?? 0),
+              ),
         border: Border.all(
           color: borderColor ?? Colors.transparent,
           width: borderWidth ?? 0,
         ),
         color: color,
+        gradient: gradient,
         boxShadow: boxShadowList,
       ),
       child: child,
     );
   }
+
+  // Styling
+  final Gradient? gradient;
 
   // Border
   final List<BoxShadow>? boxShadowList;
@@ -154,4 +166,6 @@ class AllRoundedContainers extends StatelessWidget
 
   @override
   late final Widget? child;
+
+  final bool shouldMakeCircle;
 }
