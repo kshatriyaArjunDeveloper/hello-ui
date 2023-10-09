@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hello/src/holders/ui_interface.dart';
+import 'package:hello/src/ui/interface/ui_interface.dart';
 
-class AllRoundedContainers extends StatelessWidget
-    implements SpecialAttributeWidgetInterface, SlotInterface {
-  AllRoundedContainers({
+class Container_ extends StatelessWidget
+    implements
+        BorderInterface,
+        PaddingInterface,
+        MarginInterface,
+        BaseStructureInterface {
+  Container_({
     Key? key,
     //Styling
     this.gradient,
@@ -83,12 +87,6 @@ class AllRoundedContainers extends StatelessWidget
     );
   }
 
-  // Styling
-  final Gradient? gradient;
-
-  // Border
-  final List<BoxShadow>? boxShadowList;
-
   @override
   late final double? allCornerRadius;
 
@@ -111,6 +109,7 @@ class AllRoundedContainers extends StatelessWidget
   late final double? borderWidth;
 
   // Margin
+
   @override
   late final double? topMargin;
 
@@ -133,6 +132,7 @@ class AllRoundedContainers extends StatelessWidget
   late final double? allMargin;
 
   // Padding
+
   @override
   late final double? topPadding;
 
@@ -155,8 +155,6 @@ class AllRoundedContainers extends StatelessWidget
   late final double? allPadding;
 
   // Basic
-  @override
-  late final Color? color;
 
   @override
   late final double? height;
@@ -164,8 +162,17 @@ class AllRoundedContainers extends StatelessWidget
   @override
   late final double? width;
 
-  @override
-  late final Widget? child;
+  // CUSTOM
+
+  // Styling
+  final Gradient? gradient;
+
+  // Border
+  final List<BoxShadow>? boxShadowList;
 
   final bool shouldMakeCircle;
+
+  final Color? color;
+
+  final Widget? child;
 }

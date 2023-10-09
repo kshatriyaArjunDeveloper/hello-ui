@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 
-class BaseCustomWidgetInterface {
+class BaseStructureInterface {
   late final double? height;
   late final double? width;
+}
 
-  // Margin
+class BorderInterface {
+  // Corner radius
+  late final double? topLeftRadius;
+  late final double? topRightRadius;
+  late final double? bottomLeftRadius;
+  late final double? bottomRightRadius;
+  late final double? allCornerRadius;
+
+  // Other attributes
+  late final Color? borderColor;
+  late final double? borderWidth;
+}
+
+class MarginInterface {
   late final double? leftMargin;
   late final double? rightMargin;
   late final double? topMargin;
@@ -14,27 +28,7 @@ class BaseCustomWidgetInterface {
   late final double? allMargin;
 }
 
-class BaseAttributeWidgetInterface extends BaseCustomWidgetInterface {
-  late final Color? color;
-}
-
-class SpecialAttributeWidgetInterface extends BaseAttributeWidgetInterface {
-  // Corner radius
-  late final double? topLeftRadius;
-  late final double? topRightRadius;
-  late final double? bottomLeftRadius;
-  late final double? bottomRightRadius;
-  late final double? allCornerRadius;
-
-  late final Color? borderColor;
-  late final double? borderWidth;
-}
-
-class SlotInterface {
-  late final Widget? child;
-
-  /// Anything that holds a child can give padding to its child. */
-  // Padding
+class PaddingInterface {
   late final double? leftPadding;
   late final double? rightPadding;
   late final double? topPadding;

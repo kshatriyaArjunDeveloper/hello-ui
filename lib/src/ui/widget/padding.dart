@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:hello/src/holders/ui_interface.dart';
+import 'package:hello/src/ui/interface/ui_interface.dart';
 
-class PaddingCustom extends StatelessWidget implements SlotInterface {
-  PaddingCustom({
+class Padding_ extends StatelessWidget implements PaddingInterface {
+  Padding_({
     Key? key,
     // Padding
     this.leftPadding,
@@ -49,6 +49,5 @@ class PaddingCustom extends StatelessWidget implements SlotInterface {
   @override
   late final double? verticalPadding;
 
-  @override
   late final Widget? child;
 }
