@@ -18,9 +18,18 @@ class HomeScreen extends StatelessWidget {
           bottomRightRadius: 8,
           color: Theme.of(context).colorScheme.inversePrimary,
           child: const Text('Custom container').onClick(() {
-            print('DEBUG I am working');
+            _showToast(context, 'onClick() working');
           }),
         ),
+      ),
+    );
+  }
+
+  void _showToast(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
