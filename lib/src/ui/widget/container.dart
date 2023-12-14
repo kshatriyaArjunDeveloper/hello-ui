@@ -11,6 +11,9 @@ class Container_ extends StatelessWidget
     Key? key,
     //Styling
     this.gradient,
+    this.backgroundImageAssetName,
+    this.backgroundImageFit = BoxFit.cover,
+    this.backgroundImageAlignment = Alignment.center,
     // Margin
     this.leftMargin,
     this.rightMargin,
@@ -44,11 +47,82 @@ class Container_ extends StatelessWidget
     this.child,
   }) : super(key: key);
 
+
+
+  // Margin
+
+  @override
+  late final double? topMargin;
+  @override
+  late final double? bottomMargin;
+  @override
+  late final double? leftMargin;
+  @override
+  late final double? rightMargin;
+  @override
+  late final double? verticalMargin;
+  @override
+  late final double? horizontalMargin;
+  @override
+  late final double? allMargin;
+
+  // Padding
+
+  @override
+  late final double? topPadding;
+  @override
+  late final double? bottomPadding;
+  @override
+  late final double? leftPadding;
+  @override
+  late final double? rightPadding;
+  @override
+  late final double? verticalPadding;
+  @override
+  late final double? horizontalPadding;
+  @override
+  late final double? allPadding;
+
+  // Basic
+
+  @override
+  late final double? height;
+  @override
+  late final double? width;
+
+  // CUSTOM
+
+  // Styling
+  final Gradient? gradient;
+  final String? backgroundImageAssetName;
+  final BoxFit backgroundImageFit;
+  final Alignment backgroundImageAlignment;
+
+  // Border
+  final List<BoxShadow>? boxShadowList;
+  final bool shouldMakeCircle;
+  final Color? color;
+  final Widget? child;
+  @override
+  late final double? allCornerRadius;
+  @override
+  late double? bottomLeftRadius;
+  @override
+  late double? bottomRightRadius;
+  @override
+  late double? topLeftRadius;
+  @override
+  late double? topRightRadius;
+  @override
+  late final Color? borderColor;
+  @override
+  late final double? borderWidth;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height,
-      width: width,
+      height: shouldMakeCircle ? _getBiggerDimension() : height,
+      width: shouldMakeCircle ? _getBiggerDimension() : width,
       clipBehavior: Clip.antiAlias,
       padding: EdgeInsets.only(
         left: leftPadding ?? horizontalPadding ?? allPadding ?? 0,
@@ -82,97 +156,27 @@ class Container_ extends StatelessWidget
         color: color,
         gradient: gradient,
         boxShadow: boxShadowList,
+        image: backgroundImageAssetName != null
+            ? DecorationImage(
+                image: AssetImage(backgroundImageAssetName!),
+                fit: backgroundImageFit,
+                alignment: backgroundImageAlignment,
+              )
+            : null,
       ),
       child: child,
     );
   }
 
-  @override
-  late final double? allCornerRadius;
-
-  @override
-  late double? bottomLeftRadius;
-
-  @override
-  late double? bottomRightRadius;
-
-  @override
-  late double? topLeftRadius;
-
-  @override
-  late double? topRightRadius;
-
-  @override
-  late final Color? borderColor;
-
-  @override
-  late final double? borderWidth;
-
-  // Margin
-
-  @override
-  late final double? topMargin;
-
-  @override
-  late final double? bottomMargin;
-
-  @override
-  late final double? leftMargin;
-
-  @override
-  late final double? rightMargin;
-
-  @override
-  late final double? verticalMargin;
-
-  @override
-  late final double? horizontalMargin;
-
-  @override
-  late final double? allMargin;
-
-  // Padding
-
-  @override
-  late final double? topPadding;
-
-  @override
-  late final double? bottomPadding;
-
-  @override
-  late final double? leftPadding;
-
-  @override
-  late final double? rightPadding;
-
-  @override
-  late final double? verticalPadding;
-
-  @override
-  late final double? horizontalPadding;
-
-  @override
-  late final double? allPadding;
-
-  // Basic
-
-  @override
-  late final double? height;
-
-  @override
-  late final double? width;
-
-  // CUSTOM
-
-  // Styling
-  final Gradient? gradient;
-
-  // Border
-  final List<BoxShadow>? boxShadowList;
-
-  final bool shouldMakeCircle;
-
-  final Color? color;
-
-  final Widget? child;
+  _getBiggerDimension() {
+    if (height != null && width != null) {
+      return height! > width! ? height : width;
+    } else if (height != null) {
+      return height;
+    } else if (width != null) {
+      return width;
+    } else {
+      return null;
+    }
+  }
 }
