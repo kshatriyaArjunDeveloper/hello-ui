@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:hello/src/ui/interface/ui_interface.dart';
 
 class Container_ extends StatelessWidget
@@ -31,6 +32,7 @@ class Container_ extends StatelessWidget
     this.horizontalPadding,
     this.allPadding,
     // Border
+    this.borderGradient,
     this.bottomLeftRadius,
     this.bottomRightRadius,
     this.topLeftRadius,
@@ -99,6 +101,7 @@ class Container_ extends StatelessWidget
   final Alignment backgroundImageAlignment;
 
   // Border
+  final Gradient? borderGradient;
   final List<BoxShadow>? boxShadowList;
   final bool shouldMakeCircle;
   final Color? color;
@@ -149,10 +152,7 @@ class Container_ extends StatelessWidget
                 bottomRight:
                     Radius.circular(bottomRightRadius ?? allCornerRadius ?? 0),
               ),
-        border: Border.all(
-          color: borderColor ?? Colors.transparent,
-          width: borderWidth ?? 0,
-        ),
+        border: _buildBorder(),
         color: color,
         gradient: gradient,
         boxShadow: boxShadowList,
@@ -166,6 +166,20 @@ class Container_ extends StatelessWidget
       ),
       child: child,
     );
+  }
+
+  BoxBorder _buildBorder() {
+    if (borderGradient != null) {
+      return GradientBoxBorder(
+        gradient: borderGradient!,
+        width: borderWidth ?? 1,
+      );
+    } else {
+      return Border.all(
+        color: borderColor ?? Colors.transparent,
+        width: borderWidth ?? 0,
+      );
+    }
   }
 
   _getBiggerDimension() {
