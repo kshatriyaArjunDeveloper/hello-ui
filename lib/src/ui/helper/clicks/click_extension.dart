@@ -13,6 +13,7 @@ extension ClickExtension on Widget {
   Widget onClick(void Function() onClickFunction) {
     return GestureDetector(
       onTap: onClickFunction,
+      behavior: HitTestBehavior.opaque,
       child: this,
     );
   }
