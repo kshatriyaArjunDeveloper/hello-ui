@@ -32,6 +32,7 @@ class Container_ extends StatelessWidget
     this.horizontalPadding,
     this.allPadding,
     // Border
+    this.shouldMakeBorderOutside = false,
     this.borderGradient,
     this.bottomLeftRadius,
     this.bottomRightRadius,
@@ -48,7 +49,6 @@ class Container_ extends StatelessWidget
     this.color,
     this.child,
   }) : super(key: key);
-
 
 
   // Margin
@@ -120,6 +120,8 @@ class Container_ extends StatelessWidget
   late final Color? borderColor;
   @override
   late final double? borderWidth;
+  @override
+  bool shouldMakeBorderOutside;
 
   @override
   Widget build(BuildContext context) {
@@ -178,6 +180,9 @@ class Container_ extends StatelessWidget
       return Border.all(
         color: borderColor ?? Colors.transparent,
         width: borderWidth ?? 0,
+        strokeAlign: shouldMakeBorderOutside
+            ? BorderSide.strokeAlignOutside
+            : BorderSide.strokeAlignInside,
       );
     }
   }

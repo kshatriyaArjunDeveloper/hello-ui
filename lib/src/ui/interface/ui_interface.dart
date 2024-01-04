@@ -12,6 +12,7 @@ class BorderInterface {
   late final double? bottomLeftRadius;
   late final double? bottomRightRadius;
   late final double? allCornerRadius;
+  late final bool shouldMakeBorderOutside;
 
   // Other attributes
   late final Color? borderColor;
