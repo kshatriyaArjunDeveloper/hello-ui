@@ -21,10 +21,14 @@ class Image_ extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      child: iconGradient != null
-          ? _maskWithGradient(buildSvgIcon(isMaskingGradient: true))
-          : buildSvgIcon(),
+    return SizedBox(
+      height: height,
+      width: width,
+      child: Align(
+        child: iconGradient != null
+            ? _maskWithGradient(buildSvgIcon(isMaskingGradient: true))
+            : buildSvgIcon(),
+      ),
     );
   }
 
